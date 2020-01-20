@@ -1,14 +1,18 @@
 import React from 'react';
 import CreateForm from './CreateForm';
-import web3 from './web3';
+// import web3 from './web3';
+import { Router, Route, Switch } from 'react-router-dom';
+import history from '../history';
 
-class App extends React.Component {
-    render(){
-        web3.eth.getAccounts().then(console.log);
+const App = () => {
+        // web3.eth.getAccounts().then(console.log);
         return(
-            <CreateForm />
+            <Router history={history}>
+                <Switch>
+                    <Route path="/" exact component={CreateForm}/>
+                </Switch>
+            </Router>
         );
-    }
 }
 
 export default App;
