@@ -1,16 +1,21 @@
 pragma solidity ^0.4.17;
-// pragma experimental ABIEncoderV2;
+pragma experimental ABIEncoderV2;
 
 contract TenderFactory {
     address[] public deployedTenders;
-
+    string[] public deployedTendersDetails;
     function createTender(string name_, uint startDate, uint lastDate, uint openDate, uint phone, string email) public {
         address newTender = new Tender(name_, startDate, lastDate, openDate, phone, email, msg.sender);
         deployedTenders.push(newTender);
+        deployedTendersDetails.push(name_);
     }
 
     function getDeployedTenders() public view returns (address[]) {
         return deployedTenders;
+    }
+    
+    function getDeployedTendersDetails() public view returns (string[]) {
+        return deployedTendersDetails;
     }
 }
 
