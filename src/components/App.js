@@ -4,6 +4,7 @@ import TenderList from "./TenderList";
 import Evaluate from "./Evaluate";
 
 import factory from "../ethereum/factory";
+import deploy from "../ethereum/deploy";
 
 import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
@@ -39,7 +40,7 @@ class App extends Component {
       const accounts = await ethereum.enable();
       this.setState({ act: this.state.act.concat([accounts]) });
       console.log(accounts[0]);
-
+      // deploy();
       console.log(factory.options.address);
     }
   }
