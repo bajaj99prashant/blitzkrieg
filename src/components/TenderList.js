@@ -22,42 +22,20 @@ class TenderList extends React.Component {
     const tenders = await factory.methods.getDeployedTenders().call();
     // const name = await factory.methods.getDeployedTendersDetails().call();
     this.setState({
-      tendersName: this.state.tendersName.concat([tenders])
+      tendersName: tenders
     });
-    // this.setState({
-    //   tendersDetails: this.state.tendersDetails.concat([name])
-    // });
-    console.log(tenders);
-    // console.log(name);
     console.log(this.state);
-    return <div>this is a list</div>;
-    // return this.state.tenders.map((tender, index) => (
-    //   // <li key={index.toString()}>
-    //   // {console.log(tender)}
-    //   <tr>
-    //     <td>{tender.name}</td>
-    //     <td>{tender.hash}</td>
-    //     <td>
-    //       <button>Evaluate</button>
-    //     </td>
-    //   </tr>
-    // ));
   };
 
-  // saveData() {
-  //   let data = [];
-
-  //   for (let i = 0; i < 5; i++) {
-  //     this.getHash(toString(i+4234))
-  //       .then(hash => {
-  //         data.push({
-  //           hash: hash,
-  //           title: this.titles[i],
-  //         });
-  //       })
-  //   }
-  //   localStorage.setItem("tenderData", data);
-  // }
+  finalList = () => {
+    console.log(this.state.tendersName);
+    const x = this.state.tendersName;
+    // console.log(typeof x.[0]);
+    return this.state.tendersName.map(item => {
+      console.log(item);
+      return <li key={item}>{item}</li>;
+    });
+  };
 
   loadData() {
     let data = localStorage.getItem("tendersData");
@@ -90,14 +68,7 @@ class TenderList extends React.Component {
     return (
       <>
         <header></header>
-        {/* <div id="tender"> */}
-        {/* <table id="tenders-list">
-          <th>Tender name</th>
-          <th>Teneder Hash</th>
-          <th>Evaluate</th> */}
-        <div>{this.state.name}</div>
-        {/* </table> */}
-        {/* </div> */}
+        <ul>{this.finalList()}</ul>
       </>
     );
   }
