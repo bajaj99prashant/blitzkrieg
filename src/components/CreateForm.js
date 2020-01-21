@@ -3,6 +3,8 @@ import Addfield from "./addfeild";
 import UploadFile from "./uploadFile";
 import Header from "./header";
 import "./css/CreateForm.css";
+import factory from "../ethereum/factory";
+import web3 from "../ethereum/web3";
 
 class CreateForm extends React.Component {
   constructor(props) {
@@ -38,15 +40,14 @@ class CreateForm extends React.Component {
   };
 
   onFormSubmit = async event => {
-    let temp;
     event.preventDefault();
-    temp = new Date(this.state.startDate).getTime() / 1000;
-    this.setState({ startDate: temp });
-    temp = new Date(this.state.lastDate).getTime() / 1000;
-    this.setState({ lastDate: temp });
-    temp = new Date(this.state.bidOpening).getTime() / 1000;
-    this.setState({ bidOpening: temp });
-    // console.log(this.state);
+    const startDate = new Date(this.state.startDate).getTime() / 1000;
+    // this.setState({ startDate: temp });
+    const lastDate = new Date(this.state.lastDate).getTime() / 1000;
+    // this.setState({ lastDate: temp });
+    const bidDate = new Date(this.state.bidOpening).getTime() / 1000;
+    // this.setState({ bidOpening: temp });
+    console.log(startDate, lastDate, bidDate);
 
     // save data to localstorage
     // console.log("saving...");
@@ -65,21 +66,21 @@ class CreateForm extends React.Component {
     //   localStorage.setItem("tendersData", JSON.stringify(data));
     //   console.log(data);
     // });
-
-    // await factory.methods
-    //   .createTender(
-    //     this.state.tenderName,
-    //     this.state.startDate,
-    //     this.state.lastDate,
-    //     this.state.bidOpening,
-    //     this.state.managerNumber,
-    //     this.state.managerEmail
-    //   )
-    //   .send({
-    //     from: accounts[0],
-    //     gas: "1000000"
-    //   });
-    this.props.onSubmission(this.state);
+    const accounts = await web3.eth.getAccounts();
+    await factory.methods
+      .createTender(
+        this.state.tenderName,
+        startDate,
+        lastDate,
+        bidDate,
+        this.state.managerNumber,
+        this.state.managerEmail
+      )
+      .send({
+        from: accounts[0],
+        gas: "1000000"
+      });
+    // this.props.onSubmission(this.state);
   };
 
   getHash(str, algo = "SHA-256") {
