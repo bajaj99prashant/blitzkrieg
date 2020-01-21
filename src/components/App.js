@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CreateForm from "./CreateForm";
 import TenderList from "./TenderList";
+import TenderDetail from "./TenderDetail";
 import Evaluate from "./Evaluate";
 
 import factory from "../ethereum/factory";
@@ -54,6 +55,7 @@ class App extends Component {
           />
           <Route path="/tenders" exact component={TenderList} />
           <Route path="/evaluate" exact component={Evaluate} />
+          <Route path="/detail/:id" exact component={TenderDetail} />
         </Switch>
       </Router>
     );
