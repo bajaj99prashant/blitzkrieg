@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import CreateForm from "./CreateForm";
 import TenderList from "./TenderList";
+import TenderDetail from "./TenderDetail";
 import Evaluate from "./Evaluate";
 
 import factory from "../ethereum/factory";
+import deploy from "../ethereum/deploy";
 
 import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
@@ -39,7 +41,7 @@ class App extends Component {
       const accounts = await ethereum.enable();
       this.setState({ act: this.state.act.concat([accounts]) });
       console.log(accounts[0]);
-
+      // deploy();
       console.log(factory.options.address);
     }
   }
@@ -54,6 +56,7 @@ class App extends Component {
           />
           <Route path="/tenders" exact component={TenderList} />
           <Route path="/evaluate" exact component={Evaluate} />
+          <Route path="/detail/:id" exact component={TenderDetail} />
         </Switch>
       </Router>
     );
