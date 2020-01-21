@@ -1,32 +1,48 @@
 import React from "react";
 import "./css/tenderList.css";
+import factory from "../ethereum/factory";
+// import web3 from "../ethereum/web3";
 
 class TenderList extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tenders: []
+      tendersName: [],
+      tendersDetails: []
     };
   }
 
   componentDidMount() {
-    this.loadData();
+    this.getList();
   }
 
-  getList() {
-    return this.state.tenders.map((tender, index) => (
-      // <li key={index.toString()}>
-      // {console.log(tender)}
-      <tr key={index.toString()}>
-        <td>{tender.name}</td>
-        <td>{tender.hash}</td>
-        <td>
-          <button>Evaluate</button>
-        </td>
-      </tr>
-    ));
-  }
+  getList = async () => {
+    console.log("start");
+    const tenders = await factory.methods.getDeployedTenders().call();
+    // const name = await factory.methods.getDeployedTendersDetails().call();
+    this.setState({
+      tendersName: this.state.tendersName.concat([tenders])
+    });
+    // this.setState({
+    //   tendersDetails: this.state.tendersDetails.concat([name])
+    // });
+    console.log(tenders);
+    // console.log(name);
+    console.log(this.state);
+    return <div>this is a list</div>;
+    // return this.state.tenders.map((tender, index) => (
+    //   // <li key={index.toString()}>
+    //   // {console.log(tender)}
+    //   <tr>
+    //     <td>{tender.name}</td>
+    //     <td>{tender.hash}</td>
+    //     <td>
+    //       <button>Evaluate</button>
+    //     </td>
+    //   </tr>
+    // ));
+  };
 
   // saveData() {
   //   let data = [];
@@ -74,14 +90,14 @@ class TenderList extends React.Component {
     return (
       <>
         <header></header>
-        <div id="tender">
-          <table id="tenders-list">
-            <th>Tender name</th>
-            <th>Teneder Hash</th>
-            <th>Evaluate</th>
-            {this.getList()}
-          </table>
-        </div>
+        {/* <div id="tender"> */}
+        {/* <table id="tenders-list">
+          <th>Tender name</th>
+          <th>Teneder Hash</th>
+          <th>Evaluate</th> */}
+        <div>{this.state.name}</div>
+        {/* </table> */}
+        {/* </div> */}
       </>
     );
   }
