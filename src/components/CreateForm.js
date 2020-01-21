@@ -37,7 +37,7 @@ class CreateForm extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
   };
 
-  onFormSubmit = event => {
+  onFormSubmit = async event => {
     let temp;
     event.preventDefault();
     temp = new Date(this.state.startDate).getTime() / 1000;
@@ -49,22 +49,37 @@ class CreateForm extends React.Component {
     // console.log(this.state);
 
     // save data to localstorage
-    console.log("saving...");
-    var old = localStorage.getItem("tendersData");
-    var data = [];
-    if (old !== null) {
-      data = old;
-      data = JSON.parse(data);
-    }
-    this.getHash(this.state.tenderName).then(hash => {
-      data.push({
-        name: this.state.tenderName,
-        details: this.state,
-        hash: hash
-      });
-      localStorage.setItem("tendersData", JSON.stringify(data));
-      console.log(data);
-    });
+    // console.log("saving...");
+    // var old = localStorage.getItem("tendersData");
+    // var data = [];
+    // if (old !== null) {
+    //   data = old;
+    //   data = JSON.parse(data);
+    // }
+    // this.getHash(this.state.tenderName).then(hash => {
+    //   data.push({
+    //     name: this.state.tenderName,
+    //     details: this.state,
+    //     hash: hash
+    //   });
+    //   localStorage.setItem("tendersData", JSON.stringify(data));
+    //   console.log(data);
+    // });
+
+    // await factory.methods
+    //   .createTender(
+    //     this.state.tenderName,
+    //     this.state.startDate,
+    //     this.state.lastDate,
+    //     this.state.bidOpening,
+    //     this.state.managerNumber,
+    //     this.state.managerEmail
+    //   )
+    //   .send({
+    //     from: accounts[0],
+    //     gas: "1000000"
+    //   });
+    this.props.onSubmission(this.state);
   };
 
   getHash(str, algo = "SHA-256") {
