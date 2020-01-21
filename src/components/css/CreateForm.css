@@ -90,6 +90,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-height: 20vh;
+    overflow-y: auto;
 }
 
 .list1, .list2 {
