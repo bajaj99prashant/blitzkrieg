@@ -4,8 +4,8 @@ const Web3 = require("web3");
 
 const web3 = new Web3(ganache.provider());
 
-const compiledFactory = require("../ethereum/build/TenderFactory.json");
-const compiledTender = require("../ethereum/build/Tender.json");
+const compiledFactory = require("../src/ethereum/build/TenderFactory.json");
+const compiledTender = require("../src/ethereum/build/Tender.json");
 
 let accounts;
 let factory;
