@@ -9,8 +9,7 @@ class UploadFile extends React.Component {
   render() {
     return (
       <form>
-        <input type="file" onChange={this.uploadFileHandler} />
-        <button type="submit">Upload</button>
+        <input type="file" onChange={this.uploadFileHandler} style={{ width: "13rem", marginRight: "1rem", marginTop: "1rem" }} />
       </form>
     );
   }

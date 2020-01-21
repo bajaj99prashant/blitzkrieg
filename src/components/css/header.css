@@ -1,0 +1,28 @@
+.header {
+    background: #f8f9fa;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.head {
+    font-size: 1.3rem;
+}
+
+.img1 {
+    background-image: url('./gail.png');
+    height: 5rem;
+    width: 6.5rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.img2 {
+    background-image: url('./govtindia.jpeg');
+    height: 5rem;
+    width: 3rem;
+    background-position: center;
+    background-size: cover;
+}

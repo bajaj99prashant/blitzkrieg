@@ -1,0 +1,94 @@
+* {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.header {
+    background: #f8f9fa;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.head {
+    font-size: 1.3rem;
+}
+
+.img1 {
+    background-image: url('./gail.png');
+    height: 5rem;
+    width: 6.5rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.img2 {
+    background-image: url('./govtindia.jpeg');
+    height: 5rem;
+    width: 3rem;
+    background-position: center;
+    background-size: cover;
+}
+
+.formHead {
+    margin: 2rem 5rem;
+    font-size: 1.3rem;
+    color: #dc3545;
+}
+
+.form {
+    border: 1px solid #868e96;
+    border-radius: 8px;
+    margin: 3rem 5rem;
+    padding: 3rem;
+    padding-bottom: 5rem;
+    position: relative;
+}
+
+.mainForm {
+    width: 70%;
+}
+
+.formFlex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formInput {
+    max-width: 13rem;
+    padding: 0.2rem;
+}
+
+.form2 {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.submitBtn {
+    position: absolute;
+    bottom: 3rem;
+    padding: 0.2rem 6rem;
+    background: #66CCCC;
+    color: white;
+    border: 2px dotted #17a2b8;
+    border-radius: 3px;
+}
+
+.listDiv {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list1, .list2 {
+    list-style-type: none;
+    display: block;
+}

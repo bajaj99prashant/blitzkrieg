@@ -17,10 +17,10 @@ class addField extends React.Component {
   
   render() {
     return (
-      <form onSubmit={this.onFieldSubmit}>
-        <input type="text" id="desc" onChange={this.onInputChange} />
-        <input type="number" id="quantity" onChange={this.onInputChange} />
-        <button type="submit">Add</button>
+      <form onSubmit={this.onFieldSubmit} style={{ display:"flex", width:"70%", flexDirection:"row"}}>
+        <input type="text" style = {{ maxWidth : "13rem", padding : "0.5rem", marginRight: "1rem"}} placeholder="Description" id="desc" onChange={this.onInputChange} />
+        <input type="number" style = {{ maxWidth : "13rem", padding : "0.5rem", marginRight: "1rem"}} placeholder="Quantity" id="quantity" onChange={this.onInputChange} />
+        <button type="submit" style={{padding: "0.2rem 2rem", background: "#66CCCC", color: "white", border: "2px dotted #17a2b8", borderRadius: "3px"}}>Add</button>
       </form>
     );
   }

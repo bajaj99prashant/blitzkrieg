@@ -1,4 +1,4 @@
-import React from "react-dom";
+import React from "react";
 
 class TenderList extends React.Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class TenderList extends React.Component {
   }
 
   render() {
-    return;
+    return (
+      <h1>I exist</h1>
+    );
   }
 }
 

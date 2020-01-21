@@ -1,6 +1,8 @@
 import React from "react";
 import Addfield from "./addfeild";
 import UploadFile from "./uploadFile";
+import Header from "./header";
+import "./css/CreateForm.css";
 
 class CreateForm extends React.Component {
   constructor(props) {
@@ -50,50 +52,97 @@ class CreateForm extends React.Component {
   renderDescription() {
     return this.state.description.map(item => {
       console.log(item);
-      return <span>{item}</span>;
+      return <li>{item}</li>;
     });
   }
 
   renderQuantity() {
     return this.state.Quantity.map(item => {
       console.log(item);
-      return <span>{item}</span>;
+      return <li>{item}</li>;
     });
   }
 
   render() {
     return (
-      <div className="form">
-        <form onSubmit={this.onFormSubmit}>
-          <label htmlFor="tenderName">Tender Name</label>
-          <input id="tenderName" type="text" onChange={this.onInputChange} />
+      <>
+        <Header />
+        <h1 className="formHead">Tender Details</h1>
+        <div className="form">
+          <form onSubmit={this.onFormSubmit} className="mainForm">
+            <div className="formFlex">
+              <label htmlFor="tenderName">Tender Name</label>
+              <input
+                id="tenderName"
+                className="formInput"
+                type="text"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <div className="formFlex">
+              <label htmlFor="startDate">Start Date</label>
+              <input
+                id="startDate"
+                className="formInput"
+                type="date"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <div className="formFlex">
+              <label htmlFor="lastDate">Last Date</label>
+              <input
+                id="lastDate"
+                className="formInput"
+                type="date"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <div className="formFlex">
+              <label htmlFor="managerNumber">Manager Number</label>
+              <input
+                id="managerNumber"
+                className="formInput"
+                type="text"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <div className="formFlex">
+              <label htmlFor="managerEmail">Manager Email</label>
+              <input
+                id="managerEmail"
+                className="formInput"
+                type="email"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <div className="formFlex">
+              <label htmlFor="bidOpening">Bid Opening Date</label>
+              <input
+                id="bidOpening"
+                className="formInput"
+                type="date"
+                onChange={this.onInputChange}
+              />
+            </div>
+            <br />
+            <button type="submit" className="submitBtn">
+              Create
+            </button>
+          </form>
+          <Addfield onFieldSubmit={this.onAddSubmit} />
           <br />
-          <label htmlFor="startDate">Start Date</label>
-          <input id="startDate" type="date" onChange={this.onInputChange} />
-          <br />
-          <label htmlFor="lastDate">Last Date</label>
-          <input id="lastDate" type="date" onChange={this.onInputChange} />
-          <br />
-          <label htmlFor="managerNumber">Manager Number</label>
-          <input id="managerNumber" type="text" onChange={this.onInputChange} />
-          <br />
-          <label htmlFor="managerEmail">Manager Email</label>
-          <input id="managerEmail" type="email" onChange={this.onInputChange} />
-          <br />
-          <label htmlFor="bidOpening">Bid Opening Date</label>
-          <input id="bidOpening" type="date" onChange={this.onInputChange} />
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-
-        <div>
-          {" "}
-          <br />
-          {this.renderDescription()} {this.renderQuantity()} <br />
+          <div className="listDiv">
+            <ul className="list1">{this.renderDescription()}</ul>
+            <ul className="list2">{this.renderQuantity()}</ul>
+          </div>
+          <UploadFile />
         </div>
-        <Addfield onFieldSubmit={this.onAddSubmit} />
-        <UploadFile />
-      </div>
+      </>
     );
   }
 }
