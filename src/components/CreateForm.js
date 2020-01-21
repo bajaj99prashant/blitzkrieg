@@ -5,7 +5,7 @@ import UploadFile from "./uploadFile";
 class CreateForm extends React.Component {
   constructor(props) {
     super(props);
-    localStorage.clear();
+    // localStorage.clear();
     this.state = {
       startDate: "",
       tenderName: "",
@@ -47,39 +47,37 @@ class CreateForm extends React.Component {
     // console.log(this.state);
 
     // save data to localstorage
-    console.log("saving...")
+    console.log("saving...");
     var old = localStorage.getItem("tendersData");
     var data = [];
     if (old !== null) {
       data = old;
       data = JSON.parse(data);
     }
-    this.getHash(this.state.tenderName)
-      .then(hash => {
-        data.push({
-          "name": this.state.tenderName,
-          "details": this.state,
-          "hash": hash
-        })
-        localStorage.setItem("tendersData", JSON.stringify(data));
-        console.log(data);
-      })
+    this.getHash(this.state.tenderName).then(hash => {
+      data.push({
+        name: this.state.tenderName,
+        details: this.state,
+        hash: hash
+      });
+      localStorage.setItem("tendersData", JSON.stringify(data));
+      console.log(data);
+    });
   };
 
   getHash(str, algo = "SHA-256") {
-    let strBuf = new TextEncoder('utf-8').encode(str);
-    return crypto.subtle.digest(algo, strBuf)
-      .then(hash => {
-        window.hash = hash;
-        // here hash is an arrayBuffer, 
-        // so we'll connvert it to its hex version
-        let result = '';
-        const view = new DataView(hash);
-        for (let i = 0; i < hash.byteLength; i += 4) {
-          result += ('00000000' + view.getUint32(i).toString(16)).slice(-8);
-        }
-        return result;
-      });
+    let strBuf = new TextEncoder("utf-8").encode(str);
+    return crypto.subtle.digest(algo, strBuf).then(hash => {
+      window.hash = hash;
+      // here hash is an arrayBuffer,
+      // so we'll connvert it to its hex version
+      let result = "";
+      const view = new DataView(hash);
+      for (let i = 0; i < hash.byteLength; i += 4) {
+        result += ("00000000" + view.getUint32(i).toString(16)).slice(-8);
+      }
+      return result;
+    });
   }
 
   renderDescription() {
